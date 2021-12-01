@@ -1,44 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static AdventOfCode2021.Utils;
 
-namespace AdventOfCode2021
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main()
+        int result1 = 0;
+        int result2 = 0;
+
+        StartDay(1);
+
+        // Part 1
+        StartPart(1);
+
+        var lines = ReadInputAsIntLines("input.txt").ToArray();
+
+        int current = -1;
+        foreach (var item in lines)
         {
-            int result1 = 0;
-            int result2 = 0;
-
-            Utils.StartDay(1);
-            Utils.StartPart(1);
-
-            var lines = Utils.ReadInputAsIntLines("input.txt");
-
-            int current = -1;            
-            foreach (var item in lines)
+            Log(item);
+            if (current != -1 && item > current)
             {
-                Console.Write(item);
-                if (current != -1 && item > current)
-                {
-                    Console.WriteLine("^");
-                    result1++;
-                }
-                else
-                    Console.WriteLine();
-                current = item;
+                LogLine("^");
+                result1++;
             }
-
-            Utils.EndPart(1, result1);
-
-            Utils.StartPart(2);
-
-            // ...
-
-            Utils.EndPart(2, result2);
+            else
+                LogLine();
+            current = item;
         }
+
+        EndPart(1, result1);
+
+        // Part 2
+        StartPart(2);
+
+        current = -1;
+        for (int i = 0; i < lines.Length; i++)
+        {
+            var avg = -1;
+            if (i > 2)
+            {
+                avg = lines[i] + lines[i - 1] + lines[i - 2];
+                Log(avg);
+                if (avg > current)
+                {
+                    Log("^");
+                    result2++;
+                }
+                LogLine();
+            }
+            
+            current = avg;
+        }       
+
+        EndPart(2, result2);
     }
 }

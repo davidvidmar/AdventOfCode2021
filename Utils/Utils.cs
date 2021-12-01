@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define LOG
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -71,5 +73,27 @@ namespace AdventOfCode2021
         {
             return from q in File.ReadAllLines(filename) select q.Split(',');
         }
+
+        public static void Log(object s)
+        {
+#if LOG
+            Console.Write(s);
+#endif
+        }
+
+        public static void LogLine()
+        {
+#if LOG
+            Console.WriteLine();
+#endif
+        }
+
+        public static void LogLine(object s)
+        {
+#if LOG
+            Console.WriteLine(s);
+#endif
+        }
+
     }
 }

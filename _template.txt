@@ -1,31 +1,33 @@
+using static AdventOfCode2021.Utils;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AdventOfCode2021
+class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main()
-        {
-            int result1 = 0;
-            int result2 = 0;
+        int result1 = 0;
+        int result2 = 0;
 
-            Utils.StartDay(?);
-            Utils.StartPart(1);
+        StartDay(?);
+
+        // Part 1
+        StartPart(1);
             
-            var lines = Utils.ReadInputAsLines();
-            // ...
+        var lines = ReadInputAsLines();
+        //...
 
-            Utils.EndPart(1, result1);
+        EndPart(1, result1);
 
-            Utils.StartPart(2);
+        // Part 2
+        StartPart(2);
 
-            // ...
+        //...
 
-            Utils.EndPart(2, result2);
-        }
+        EndPart(2, result2);
     }
 }
