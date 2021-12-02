@@ -1,5 +1,4 @@
-﻿
-using System.Linq;
+﻿using System.Linq;
 using static AdventOfCode2021.Utils;
 
 class Program
