@@ -57,7 +57,7 @@ foreach (var line in lines)
     if (way == "down")
         aim += amount;
 
-    LogLine($"pos = {pos}, depth = {depth}, aim = {aim}");
+    //LogLine($"pos = {pos}, depth = {depth}, aim = {aim}");
 }
 
 LogLine($"pos = {pos}, depth = {depth}");
