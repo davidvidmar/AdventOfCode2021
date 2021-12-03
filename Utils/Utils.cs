@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace AdventOfCode2021
 {
@@ -95,5 +96,14 @@ namespace AdventOfCode2021
 #endif
         }
 
+
+        public static string Xor(string key, string input)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < input.Length; i++)
+                sb.Append((char)(input[i] ^ key[(i % key.Length)]));
+            var result = sb.ToString();
+            return result;
+        }
     }
 }
