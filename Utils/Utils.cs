@@ -28,8 +28,8 @@ namespace AdventOfCode2021
         }
 
         public static void EndPart(int part, long value = 0)
-        {            
-            EndPart(part, value != 0 ? value.ToString(): "");
+        {
+            EndPart(part, value != 0 ? value.ToString() : "");
         }
 
         public static void EndPart(int part, string value)
@@ -37,7 +37,7 @@ namespace AdventOfCode2021
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"\nResult  = {value}");
             Console.ForegroundColor = ConsoleColor.Gray;
-            Console.WriteLine($"Elapsed = {watches[part-1].Elapsed}\n");
+            Console.WriteLine($"Elapsed = {watches[part - 1].Elapsed}\n");
             Console.ResetColor();
         }
 
@@ -46,12 +46,12 @@ namespace AdventOfCode2021
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Press any key...");
             Console.ResetColor();
-            Console.ReadKey();        
+            Console.ReadKey();
         }
 
         public static string[] ReadInputAsLines(string filename = "input.txt")
         {
-            return File.ReadAllLines(filename);            
+            return File.ReadAllLines(filename);
         }
 
         public static IEnumerable<Int32> ReadInputAsIntLines(string filename = "input.txt")
@@ -69,11 +69,33 @@ namespace AdventOfCode2021
             var inputFile = File.ReadAllText(filename);
             return from q in inputFile.Split(',') select Convert.ToInt32(q);
         }
-            
+
+
         public static IEnumerable<string[]> ReadInputAsStringArrays(string filename = "input.txt")
         {
             return from q in File.ReadAllLines(filename) select q.Split(',');
         }
+
+        public static (int[,] area, int cols, int lines) ReadIntArray(string filename = "input.txt")
+        {
+            var inputFile = File.ReadAllLines(filename);
+
+            var lines = inputFile.Length;
+            var cols = inputFile[0].Length;
+
+            var area = new int[cols, lines];
+
+            for (int l = 0; l < lines; l++)
+            {
+                var s = inputFile[l];
+                for (int c = 0; c < cols; c++)
+                {
+                    area[c, l] = Convert.ToInt32(s[c].ToString());
+                }
+            }
+            return (area, cols, lines);
+        }
+
 
         public static void Log(object s)
         {
